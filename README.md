@@ -11,5 +11,5 @@ This is known as the evolutionary method, in this case applied to computing.
 ###Installation
 
     cd Evolution
-    chmod a+x run.sh
-    ./run.sh
+    cc rand.c
+    ./a.out [start] [goal]
