@@ -4,9 +4,10 @@
 
 	void runSimulation(long goal, long startPolong, long visible);
 
-	int main() {
-		srand ( time(NULL) );
-		runSimulation(123, 0, 1);
+	int main(int argc, char *argv[]) {
+		srand(time(NULL));
+		runSimulation(atoi(argv[2]), atoi(argv[1]), 1);
+		
 		return 0;
 	}
 
