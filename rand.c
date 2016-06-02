@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-	void runSimulation(long goal, long startPolong, long visible);
+	void runSimulation(long goal, long startPoint, long visible);
 
 	int main(int argc, char *argv[]) {
 		srand(time(NULL));
@@ -11,36 +11,40 @@
 		return 0;
 	}
 
-	void runSimulation(long goal, long startPolong, long visible) {
+	void runSimulation(long goal, long startPoint, long visible) {
 		long count = 0;
 
-		while(startPolong != goal) {
+		while(startPoint != goal) {
 			count++;
-			long oper = rand() % 4;
+			long oper = rand() % 5;
 			long range = (rand() % 100) + 1;
 			char voper = 'E';
 
 			switch(oper) {
 				case 0:
-					startPolong = startPolong + range;
+					startPoint = startPoint + range;
 					voper = '+';
 					break;
 				case 1:
-					startPolong = startPolong - range; 
+					startPoint = startPoint - range; 
 					voper = '-';
 					break;
 				case 2:
-					startPolong = startPolong * range;
+					startPoint = startPoint * range;
 					voper = '*';
 					break;
 				case 3:
-					startPolong = startPolong / range;
+					startPoint = startPoint / range;
 					voper = '/';
+					break;
+				case 4:
+					startPoint = startPoint % range;
+					voper = '%';
 					break;
 			}
 			
 			if(visible) {
-				printf("%c %ld = %ld\n", voper, range, startPolong);
+				printf("%c %ld = %ld\n", voper, range, startPoint);
 			}
 		}
 
