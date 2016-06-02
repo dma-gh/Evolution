@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-	void runSimulation(long goal, long startPoint, long visible, int mod);
+	void runSimulation(long goal, long startPoint, int visible, int mod);
 
 	int main(int argc, char *argv[]) {
 		srand(time(NULL));
@@ -11,7 +11,7 @@
 		return 0;
 	}
 
-	void runSimulation(long goal, long startPoint, long visible, int mod) {
+	void runSimulation(long goal, long startPoint, int visible, int mod) {
 		long count = 0;
 
 		while(startPoint != goal) {
