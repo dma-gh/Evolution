@@ -2,21 +2,21 @@
 #include <stdlib.h>
 #include <time.h>
 
-	void runSimulation(long goal, long startPoint, long visible);
+	void runSimulation(long goal, long startPoint, long visible, int mod);
 
 	int main(int argc, char *argv[]) {
 		srand(time(NULL));
-		runSimulation(atoi(argv[2]), atoi(argv[1]), 1);
+		runSimulation(atoi(argv[2]), atoi(argv[1]), 1, 1);
 		
 		return 0;
 	}
 
-	void runSimulation(long goal, long startPoint, long visible) {
+	void runSimulation(long goal, long startPoint, long visible, int mod) {
 		long count = 0;
 
 		while(startPoint != goal) {
 			count++;
-			long oper = rand() % 5;
+			long oper = rand() % (4 + mod);
 			long range = (rand() % 100) + 1;
 			char voper = 'E';
 
