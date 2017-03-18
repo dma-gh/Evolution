@@ -9,7 +9,7 @@ Evolution will be able to solve simple and eventually advanced mathematic algori
 This is known as the evolutionary method, in this case applied to computing.
 
 ###Installation
-
-    cd Evolution
-    cc rand.c
-    ./a.out [start] [goal]
+ 	$make 
+###Execution
+	./rand [Starting Point] [Goal] [option]
+	option -nprint :if given as argument doesnt print the information for each iteration 
