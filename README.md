@@ -11,5 +11,6 @@ This is known as the evolutionary method, in this case applied to computing.
 ###Installation
  	$make 
 ###Execution
-	./rand [Starting Point] [Goal] [option]
-	option -nprint :if given as argument doesnt print the information for each iteration 
+	./rand [Starting Point] [Goal] [Equations] [Deviation]
+	Equations: [1 : 0] Enables or disables printing equations
+	Deviation: [1 : 0] Enables or disables showing current fitness

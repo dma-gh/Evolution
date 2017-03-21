@@ -2,21 +2,28 @@
 #include <stdlib.h>
 #include <time.h>
 
-	void runSimulation(long goal, long startPoint, int visible, int mod);
+	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod);
 
 	int main(int argc, char *argv[]) {
-		int printresults ;
-		printresults = (argc > 3 ? 0 : 1) ; /*if a third option is chosen then it doesn't prints the results  */
 		srand(time(NULL));
-		runSimulation(atoi(argv[2]), atoi(argv[1]), printresults, 1);
+
+		int showEquations = 1;
+		int showDeviation = 0;
+
+		if(argc > 3) {
+			showEquations = atoi(argv[3]);
+			showDeviation = atoi(argv[4]);
+		}
+
+		runSimulation(atoi(argv[2]), atoi(argv[1]), showEquations, showDeviation, 1);
 
 		return 0;
 	}
 
-	/*This programm uses the equation to make */
+	/*This program uses the equation to make */
 	/* a' = a (operator) b */
 
-	void runSimulation(long goal, long startPoint, int visible, int mod) {
+	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod) {
 		long count = 0;
 
 		while(startPoint != goal) {
@@ -48,11 +55,14 @@
 					break;
 			}
 
-			if(visible) {
+			if(showEquations) {
 				printf("%c %ld = %ld\n", voper, range, startPoint);
+			}
+
+			if(showDeviation) {
+				printf("%f\n", 1/(1 + (float)goal - (float)startPoint)); /* This will print the deviation */
 			}
 		}
 
-		printf("It took %ld iterations to reach the goal of %ld\n",
-			count, goal);
+		printf("It took %ld iterations to reach the goal of %ld\n", count, goal);
 	}
