@@ -3,6 +3,9 @@
 #include <time.h>
 #include <math.h>
 
+#define OP_NUM 5 /* Number of operators */
+#define RANGE 100 /* Define range of b */
+
 	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod);
 
 	int main(int argc, char *argv[]) {
@@ -34,7 +37,34 @@
 	{
 		return (1 / ((deviation(x,goal) + 1.0)) ) ;
 	}
-
+	char operate(long *a,long range)
+	{
+		char operator ;
+		char oper = rand() % (OP_NUM + 1) ;
+		switch(oper) {
+			case 0:
+				*a = *a + range;
+				operator = '+';
+				break;
+			case 1:
+				*a = *a - range;
+				operator = '-';
+				break;
+			case 2:
+				*a = *a * range;
+				operator = '*';
+				break;
+			case 3:
+				*a = *a / range;
+				operator = '/';
+				break;
+			case 4:
+				*a = *a % range;
+				operator = '%';
+				break;
+		}
+		return operator ;
+	}
 	/*This program uses the equation to make */
 	/* a' = a (operator) range */
 
@@ -43,32 +73,9 @@
 
 		while(startPoint != goal) {
 			count++;
-			long oper = rand() % (4 + mod);			/* Gets operator randomly		*/
 			long range = (rand() % 100) + 1;		/* Gets b out of random range   */
 			char voper = 'E';
-
-			switch(oper) {
-				case 0:
-					startPoint = startPoint + range;
-					voper = '+';
-					break;
-				case 1:
-					startPoint = startPoint - range;
-					voper = '-';
-					break;
-				case 2:
-					startPoint = startPoint * range;
-					voper = '*';
-					break;
-				case 3:
-					startPoint = startPoint / range;
-					voper = '/';
-					break;
-				case 4:
-					startPoint = startPoint % range;
-					voper = '%';
-					break;
-			}
+			voper = operate(&startPoint ,range) ;
 
 			if(showEquations) {
 				printf("%c %ld = %ld\n", voper, range, startPoint);
