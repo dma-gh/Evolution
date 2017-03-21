@@ -3,8 +3,8 @@
 #include <time.h>
 #include <math.h>
 
-#define OP_NUM 5 /* Number of operators */
-#define RANGE 100 /* Define range of b */
+#include "functions.h"
+
 
 	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod);
 
@@ -28,42 +28,6 @@
 		runSimulation(atoi(argv[2]), atoi(argv[1]), showEquations, showDeviation, 1);
 
 		return 0;
-	}
-	int deviation(int x,int goal)
-	{
-		return abs(x - goal) ;
-	}
-	double fitness(int x ,int goal)
-	{
-		return (1 / ((deviation(x,goal) + 1.0)) ) ;
-	}
-	char operate(long *a,long range)
-	{
-		char operator ;
-		char oper = rand() % (OP_NUM + 1) ;
-		switch(oper) {
-			case 0:
-				*a = *a + range;
-				operator = '+';
-				break;
-			case 1:
-				*a = *a - range;
-				operator = '-';
-				break;
-			case 2:
-				*a = *a * range;
-				operator = '*';
-				break;
-			case 3:
-				*a = *a / range;
-				operator = '/';
-				break;
-			case 4:
-				*a = *a % range;
-				operator = '%';
-				break;
-		}
-		return operator ;
 	}
 	/*This program uses the equation to make */
 	/* a' = a (operator) range */

@@ -10,6 +10,7 @@ This is known as the evolutionary method, in this case applied to computing.
 
 ### Installation
  	$make 
+ 	$make clean 
 ### Execution
 	./rand [Starting Point] [Goal] [Equations] [Deviation] [seed] [seed number]
 	Equations: [1 : 0] Enables or disables printing equations
