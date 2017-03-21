@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod);
 
@@ -18,6 +19,10 @@
 		runSimulation(atoi(argv[2]), atoi(argv[1]), showEquations, showDeviation, 1);
 
 		return 0;
+	}
+	double fitness(int x ,int goal)
+	{
+		return (1 / (abs(x - goal) + 1)) ;
 	}
 
 	/*This program uses the equation to make */
@@ -60,7 +65,7 @@
 			}
 
 			if(showDeviation) {
-				printf("%f\n", 1/(1 + (float)goal - (float)startPoint)); /* This will print the deviation */
+				printf("%f\n", fitness(startPoint ,goal)); /* This will print the deviation */
 			}
 		}
 
