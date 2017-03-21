@@ -26,13 +26,17 @@
 
 		return 0;
 	}
+	int deviation(int x,int goal)
+	{
+		return abs(x - goal) ;
+	}
 	double fitness(int x ,int goal)
 	{
-		return (1 / (abs(x - goal) + 1)) ;
+		return (1 / ((deviation(x,goal) + 1.0)) ) ;
 	}
 
 	/*This program uses the equation to make */
-	/* a' = a (operator) b */
+	/* a' = a (operator) range */
 
 	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod) {
 		long count = 0;
@@ -71,7 +75,7 @@
 			}
 
 			if(showDeviation) {
-				printf("%f\n", fitness(startPoint ,goal)); /* This will print the deviation */
+				printf("Fitness : %f\n",fitness(startPoint,goal)); /* Prints fitness function */
 			}
 		}
 
