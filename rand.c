@@ -6,7 +6,6 @@
 	void runSimulation(long goal, long startPoint, int showEquations, int showDeviation, int mod);
 
 	int main(int argc, char *argv[]) {
-		srand(time(NULL));
 
 		int showEquations = 1;
 		int showDeviation = 0;
@@ -14,6 +13,13 @@
 		if(argc > 3) {
 			showEquations = atoi(argv[3]);
 			showDeviation = atoi(argv[4]);
+		}
+		if(argc > 5){
+			srand(atoi(argv[6])) ;
+		}
+		else
+		{
+			srand(time(NULL));
 		}
 
 		runSimulation(atoi(argv[2]), atoi(argv[1]), showEquations, showDeviation, 1);
